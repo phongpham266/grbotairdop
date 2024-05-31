@@ -1,19 +1,16 @@
 {
-  "version": 2,
-  "builds": [
+  "headers": [
     {
-      "src": "Build/**",
-      "use": "@vercel/static"
+      "source": "/(.*\\.wasm)",
+      "headers": [
+        { "key": "Content-Type", "value": "application/wasm" }
+      ]
     },
     {
-      "src": "index.html",
-      "use": "@vercel/static"
-    }
-  ],
-  "routes": [
-    {
-      "src": "/(.*)",
-      "dest": "/index.html"
+      "source": "/(.*\\.gz)",
+      "headers": [
+        { "key": "Content-Encoding", "value": "gzip" }
+      ]
     }
   ]
 }
